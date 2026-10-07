@@ -1,0 +1,29 @@
+Project Directory Structure
+
+Plaintext
+word-ladder/
+├── cmd/
+│   ├── client/
+│   │   └── main.go           # Executable 1: Runs CLI UI
+│   ├── server/
+│   │   └── main.go           # Executable 2: Runs Game Server logic
+│   └── dictionary/
+│       └── main.go           # Executable 3: Runs Dictionary lookup service
+│
+├── proto/
+│   ├── game.proto            # Protobuf interface definitions
+│   ├── game.pb.go            # Generated Go code from protoc
+│   └── game_grpc.pb.go       # Generated gRPC code from protoc
+│
+├── internal/                 # Core game logic and Design Patterns
+│   ├── factory/
+│   │   └── game_factory.go   # Factory Pattern: Starts new games[cite: 3, 4]
+│   ├── validation/
+│   │   └── chain.go          # Chain of Responsibility Pattern: Rule checks
+│   └── dictionary/
+│       └── store.go          # Singleton Pattern: In-memory word map[cite: 3]
+│
+├── words_dictionary.json     # Word list dataset[cite: 3]
+├── go.mod                    # Go module dependency file
+├── go.sum                    # Go module checksums
+└── README.md                 # Design pattern documentation[cite: 3]

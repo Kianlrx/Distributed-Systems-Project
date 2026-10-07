@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package game;
+
+option go_package = "word-ladder/proto";
+
+// Dictionary lookup service
+service DictionaryService {
+  rpc ValidateWord (WordRequest) returns (WordResponse);
+}
+
+// Game server service
+service GameService {
+  rpc StartGame (StartGameRequest) returns (StartGameResponse);
+  rpc SubmitWord (SubmitWordRequest) returns (SubmitWordResponse);
+}
+
+// Messages for DictionaryService
+message WordRequest {
+  string word = 1;
+}
+
+message WordResponse {
+  bool isValid = 1;
+}
+
+// Messages for game server
+message StartGameRequest {}
+
+message StartGameResponse {
+  string startWord = 1;
+  string targetWord = 2;
+  string message = 3;
+}
+
+message SubmitWordRequest {
+  string word = 1;
+}
+
+message SubmitWordResponse {
+  bool isValid = 1;
+  string message = 2;
+  string currentWord = 3;
+  string targetWord = 4;
+  string isComplete = 5;
+}
